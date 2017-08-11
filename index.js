@@ -5,8 +5,9 @@ var app = express();
 app.get('/', function (req, res) {
  res.send('Hello World!');
 });
-app.get('/greetings', function (req, res) {
- res.send('Hello, Joe');
+app.get('/greetings/:users', function (req, res) {
+ res.send('Hello ' + req.params.users);
+
 });
 
 //start the server
