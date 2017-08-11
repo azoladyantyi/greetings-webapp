@@ -4,10 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "author": "azola",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azoladyantyi/greetings-webapp.git"
+  },
+  "author": "Azola",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azoladyantyi/greetings-webapp/issues"
+  },
+  "homepage": "https://github.com/azoladyantyi/greetings-webapp#readme",
   "dependencies": {
     "express": "^4.15.4"
   }
