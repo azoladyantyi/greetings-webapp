@@ -3,7 +3,6 @@ var app = express();
 var list = [];
 var avoidDublicate = [];
 
-
 // create a route
 app.get('/', function(req, res) {
     res.send('Hello World!');
@@ -12,27 +11,39 @@ app.get('/', function(req, res) {
 app.get('/greetings/:users', function(req, res) {
     res.send('Hello ' + req.params.users);
     var users = req.params.users
-    if (avoidDublicate.indexOf(users) === -1) {
-        avoidDublicate.push(users)
-        list.push(users);
-    };
+    // if (avoidDublicate.indexOf(users) === -1) {
+    //     avoidDublicate.push(users)
+    list.push(users);
+    // };
 });
 app.get('/greeted', function(req, res) {
-    res.send(avoidDublicate);
-
+    // var users = req.params.users;
+    res.send(list);
 });
+
+
 app.get('/counter/:users', function(req, res) {
     var users = req.params.users;
-    //creat a variable and asign it as 0
-    var counter = 0;
-    //createa for loop
-    for (var i = 0; i < list.length; i++) {
-        if (list[i].users = users) {
-            counter++;
+
+    var userCounts = [];
+
+    //loop through all the users
+    list.forEach(function(users) {
+
+        //initialize the value in an array
+        if (userCounts[users] === undefined) {
+            userCounts[users] = 0;
         }
-    }
-    res.send(users + " " + "has been greeted " + counter++ + " " + 'times')
+        // increment the counter for each user in the Map
+        userCounts[users] = userCounts[users] + 1;
+    });
+    //test userCounts using terminal
+    // console.log((userCounts));
+    res.send(users + " " + "has been greeted " + userCounts[users] + " " + 'times')
 });
+
+
+
 
 //start the server
 var server = app.listen(3000, function() {
